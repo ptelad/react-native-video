@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import {StyleSheet, requireNativeComponent, NativeModules, View, ViewPropTypes, Image, Platform, findNodeHandle} from 'react-native';
 import resolveAssetSource from 'react-native/Libraries/Image/resolveAssetSource';
+import { CachedImage } from 'react-native-cached-image';
 import TextTrackType from './TextTrackType';
 import FilterType from './FilterType';
 import VideoResizeMode from './VideoResizeMode.js';
@@ -318,7 +319,7 @@ export default class Video extends Component {
           style={StyleSheet.absoluteFill}
         />
         {this.state.showPoster && (
-          <Image style={posterStyle} source={{ uri: this.props.poster }} />
+          <CachedImage style={posterStyle} source={{ uri: this.props.poster }} />
         )}
       </View>
     );
