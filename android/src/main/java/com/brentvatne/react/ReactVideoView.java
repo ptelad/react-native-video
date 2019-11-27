@@ -410,7 +410,6 @@ public class ReactVideoView extends ScalableVideoView implements
                 mProgressUpdateHandler.post(mProgressUpdateRunnable);
             }
         }
-        setKeepScreenOn(!mPaused);
     }
 
     // reduces the volume based on stereoPan
@@ -661,9 +660,6 @@ public class ReactVideoView extends ScalableVideoView implements
     public void onCompletion(MediaPlayer mp) {
         isCompleted = true;
         mEventEmitter.receiveEvent(getId(), Events.EVENT_END.toString(), null);
-        if (!mRepeat) {
-            setKeepScreenOn(false);
-        }
     }
         
     // This is not fully tested and does not work for all forms of timed metadata
@@ -699,7 +695,6 @@ public class ReactVideoView extends ScalableVideoView implements
     protected void onDetachedFromWindow() {
         mMediaPlayerValid = false;
         super.onDetachedFromWindow();
-        setKeepScreenOn(false);
     }
 
     @Override
@@ -712,7 +707,6 @@ public class ReactVideoView extends ScalableVideoView implements
         else {
             setSrc(mSrcUriString, mSrcType, mSrcIsNetwork, mSrcIsAsset, mRequestHeaders);
         }
-        setKeepScreenOn(true);
     }
 
     @Override

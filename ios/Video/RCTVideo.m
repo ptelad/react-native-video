@@ -369,6 +369,7 @@ static int const RCTVideoUnset = -1;
         
       _player = [AVPlayer playerWithPlayerItem:_playerItem];
       _player.actionAtItemEnd = AVPlayerActionAtItemEndNone;
+      _player.preventsDisplaySleepDuringVideoPlayback = NO;
         
       [_player addObserver:self forKeyPath:playbackRate options:0 context:nil];
       _playbackRateObserverRegistered = YES;
